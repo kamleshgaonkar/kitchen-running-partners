@@ -43,7 +43,7 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const PHONE_HREF = "tel:+91918452969696";
+const PHONE_HREF = "tel:+918452969696";
 
 function HomePage() {
   return (
@@ -523,13 +523,13 @@ function Contact() {
           </p>
 
           <div className="mt-8 space-y-4">
-            <ContactRow icon={Phone} label="Phone" value="+91 8452 96 9696" href="tel:+91918452969696" />
+            <ContactRow icon={Phone} label="Phone" value="+91 8452 969696" href="tel:+918452969696" />
             <ContactRow icon={Mail} label="Email" value="support@equipmentcarecompany.com" href="mailto:support@equipmentcarecompany.com" />
             <ContactRow icon={MapPin} label="Service Locations" value="Mumbai • Pune • Goa • Expanding across India" />
           </div>
 
           <a
-            href="https://wa.me/91918452969696?text=Hi%20ECC%2C%20I%20need%20equipment%20support."
+            href="https://wa.me/918452969696?text=Hi%20ECC%2C%20I%20need%20equipment%20support."
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-3 rounded-xl bg-[#25D366] px-6 py-4 font-semibold text-white shadow-lg hover:brightness-95 transition"
@@ -594,7 +594,7 @@ function Footer() {
         <div>
           <h4 className="text-sm font-bold uppercase tracking-widest text-white">Contact</h4>
           <ul className="mt-4 space-y-3 text-white/70 text-sm">
-            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-ecc-red" /> +91 8452 96 9696</li>
+            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-ecc-red" /> +91 8452 969696</li>
             <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 text-ecc-red" /> support@equipmentcarecompany.com</li>
             <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 text-ecc-red" /> Mumbai • Pune • Goa</li>
           </ul>
