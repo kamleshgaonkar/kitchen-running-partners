@@ -48,7 +48,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a href="tel:+919999999999" className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-ecc-charcoal hover:text-ecc-blue transition-colors">
+          <a href="tel:+918452969696" className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-ecc-charcoal hover:text-ecc-blue transition-colors">
             <Phone className="h-4 w-4 text-ecc-blue" />
             Call Now
           </a>
@@ -82,7 +82,7 @@ export function SiteHeader() {
             ))}
             <div className="mt-3 flex flex-col gap-2">
               <a href="#contact" onClick={() => setOpen(false)} className="btn-primary">Request Support</a>
-              <a href="tel:+919999999999" className="btn-secondary">
+              <a href="tel:+918452969696" className="btn-secondary">
                 <Phone className="h-4 w-4 text-ecc-blue" /> Call Now
               </a>
             </div>

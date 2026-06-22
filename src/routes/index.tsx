@@ -6,6 +6,7 @@ import {
   TrendingDown, Network, BadgeCheck, FileText, Recycle, IndianRupee,
 } from "lucide-react";
 import logo from "@/assets/ecc-logo.svg.asset.json";
+import logoWhite from "@/assets/ecc-logo-white.svg.asset.json";
 import heroImg from "@/assets/hero-kitchen.jpg";
 import ctaImg from "@/assets/cta-kitchen.jpg";
 import techImg from "@/assets/technician.jpg";
@@ -34,7 +35,7 @@ export const Route = createFileRoute("/")({
         "@type": "LocalBusiness",
         name: "Equipment Care Company",
         description: "Commercial kitchen equipment maintenance, repair, AMC and refurbishment.",
-        telephone: "+91-9999999999",
+        telephone: "+91-8452969696",
         areaServed: ["Mumbai", "Pune", "Goa", "India"],
         url: "/",
       }),
@@ -43,7 +44,7 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const PHONE_HREF = "tel:+919999999999";
+const PHONE_HREF = "tel:+918452969696";
 
 function HomePage() {
   return (
@@ -523,13 +524,13 @@ function Contact() {
           </p>
 
           <div className="mt-8 space-y-4">
-            <ContactRow icon={Phone} label="Phone" value="+91 99999 99999" href="tel:+919999999999" />
+            <ContactRow icon={Phone} label="Phone" value="+91 8452 969696" href="tel:+918452969696" />
             <ContactRow icon={Mail} label="Email" value="support@equipmentcarecompany.com" href="mailto:support@equipmentcarecompany.com" />
             <ContactRow icon={MapPin} label="Service Locations" value="Mumbai • Pune • Goa • Expanding across India" />
           </div>
 
           <a
-            href="https://wa.me/919999999999?text=Hi%20ECC%2C%20I%20need%20equipment%20support."
+            href="https://wa.me/918452969696?text=Hi%20ECC%2C%20I%20need%20equipment%20support."
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-3 rounded-xl bg-[#25D366] px-6 py-4 font-semibold text-white shadow-lg hover:brightness-95 transition"
@@ -569,9 +570,7 @@ function Footer() {
     <footer className="bg-ecc-charcoal text-white">
       <div className="container-x py-14 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="inline-flex bg-white rounded-lg p-3">
-            <img src={logo.url} alt="Equipment Care Company" className="h-9 w-auto" />
-          </div>
+          <img src={logoWhite.url} alt="Equipment Care Company" className="h-12 w-auto" />
           <p className="mt-5 text-white/70 max-w-md leading-relaxed">
             Equipment Care Company supports commercial kitchens with maintenance,
             repairs, AMC programs and refurbished equipment solutions.
@@ -594,7 +593,7 @@ function Footer() {
         <div>
           <h4 className="text-sm font-bold uppercase tracking-widest text-white">Contact</h4>
           <ul className="mt-4 space-y-3 text-white/70 text-sm">
-            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-ecc-red" /> +91 99999 99999</li>
+            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-ecc-red" /> +91 8452 969696</li>
             <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 text-ecc-red" /> support@equipmentcarecompany.com</li>
             <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 text-ecc-red" /> Mumbai • Pune • Goa</li>
           </ul>
