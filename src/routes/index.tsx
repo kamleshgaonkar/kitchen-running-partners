@@ -6,6 +6,7 @@ import {
   TrendingDown, Network, BadgeCheck, FileText, Recycle, IndianRupee,
 } from "lucide-react";
 import logo from "@/assets/ecc-logo.svg.asset.json";
+import logoWhite from "@/assets/ecc-logo-white.svg.asset.json";
 import heroImg from "@/assets/hero-kitchen.jpg";
 import ctaImg from "@/assets/cta-kitchen.jpg";
 import techImg from "@/assets/technician.jpg";
@@ -569,9 +570,7 @@ function Footer() {
     <footer className="bg-ecc-charcoal text-white">
       <div className="container-x py-14 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="inline-flex bg-white rounded-lg p-3">
-            <img src={logo.url} alt="Equipment Care Company" className="h-9 w-auto" />
-          </div>
+          <img src={logoWhite.url} alt="Equipment Care Company" className="h-12 w-auto" />
           <p className="mt-5 text-white/70 max-w-md leading-relaxed">
             Equipment Care Company supports commercial kitchens with maintenance,
             repairs, AMC programs and refurbished equipment solutions.
