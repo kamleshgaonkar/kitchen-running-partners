@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { z } from "zod";
 
+const CONTACT_EMAIL = "equipmentcarecompany@gmail.com";
+
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
   company: z.string().trim().min(2, "Company is required").max(120),
@@ -26,7 +28,7 @@ export function ContactForm() {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const data = Object.fromEntries(fd.entries());
+    const data = Object.fromEntries(fd.entries()) as Record<string, string>;
     const parsed = schema.safeParse(data);
     if (!parsed.success) {
       const fe: Record<string, string> = {};
@@ -35,6 +37,20 @@ export function ContactForm() {
       return;
     }
     setErrors({});
+
+    const subject = `Service enquiry: ${data.requirement} — ${data.company}`;
+    const body = [
+      `Name: ${data.name}`,
+      `Company: ${data.company}`,
+      `Phone: ${data.phone}`,
+      `Email: ${data.email}`,
+      `Requirement: ${data.requirement}`,
+      "",
+      "Message:",
+      data.message || "(none)",
+    ].join("\n");
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   }
 
@@ -42,8 +58,10 @@ export function ContactForm() {
     return (
       <div className="rounded-xl border border-border bg-white p-8 text-center">
         <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ecc-blue/10 text-ecc-blue text-2xl">✓</div>
-        <h3 className="text-xl font-bold">Request received</h3>
-        <p className="mt-2 text-muted-foreground">Our team will reach out shortly to support your kitchen operations.</p>
+        <h3 className="text-xl font-bold">Request prepared</h3>
+        <p className="mt-2 text-muted-foreground">
+          Your email client should open with your enquiry ready to send to {CONTACT_EMAIL}.
+        </p>
       </div>
     );
   }
@@ -86,8 +104,10 @@ export function ContactForm() {
           <textarea id="message" name="message" rows={4} className={field + " mt-1.5 resize-none"} placeholder="Equipment type, location, urgency..." maxLength={1000} />
         </div>
       </div>
-      <button type="submit" className="btn-primary mt-6 w-full md:w-auto">Request Support</button>
-      <p className="mt-4 text-xs text-muted-foreground">By submitting you agree to be contacted by ECC about your enquiry.</p>
+      <button type="submit" className="btn-primary mt-6 w-full md:w-auto">Send Enquiry</button>
+      <p className="mt-4 text-xs text-muted-foreground">
+        Submitting opens your email app with the enquiry pre-filled to {CONTACT_EMAIL}.
+      </p>
     </form>
   );
 }
