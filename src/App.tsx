@@ -1,12 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
 import {
   Wrench, ShieldCheck, RotateCcw, Cog, Package, Zap, AlertTriangle,
   Hotel, Utensils, CloudFog, Cake, Stethoscope, Building2, Factory, ChefHat,
   Flame, Snowflake, ChevronRight, Phone, Mail, MapPin, Clock, Users, Award,
   TrendingDown, Network, BadgeCheck, FileText, Recycle, IndianRupee,
 } from "lucide-react";
-import logo from "@/assets/ecc-logo.svg.asset.json";
-import logoWhite from "@/assets/ecc-logo-white.svg.asset.json";
+import logoWhite from "@/assets/ecc-logo-white.svg";
 import heroImg from "@/assets/hero-kitchen.jpg";
 import ctaImg from "@/assets/cta-kitchen.jpg";
 import techImg from "@/assets/technician.jpg";
@@ -15,38 +13,11 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ContactForm } from "@/components/ContactForm";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Equipment Care Company — Keeping Commercial Kitchens Running" },
-      { name: "description", content: "ECC provides commercial kitchen equipment maintenance, repairs, AMC, emergency support and refurbished equipment for restaurants, hotels and cloud kitchens across India." },
-      { name: "keywords", content: "commercial kitchen repair, kitchen equipment maintenance, restaurant equipment AMC, refurbished kitchen equipment, cloud kitchen support, hotel kitchen service India" },
-      { property: "og:title", content: "Equipment Care Company — Keeping Commercial Kitchens Running" },
-      { property: "og:description", content: "Maintenance, repairs, emergency support and refurbished equipment for restaurants, hotels and cloud kitchens." },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [{
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        name: "Equipment Care Company",
-        description: "Commercial kitchen equipment maintenance, repair, AMC and refurbishment.",
-        telephone: "+91-8452969696",
-        areaServed: ["Mumbai", "Pune", "Goa", "India"],
-        url: "/",
-      }),
-    }],
-  }),
-  component: HomePage,
-});
-
 const PHONE_HREF = "tel:+918452969696";
+const EMAIL = "equipmentcarecompany@gmail.com";
+const EMAIL_HREF = `mailto:${EMAIL}`;
 
-function HomePage() {
+export default function App() {
   return (
     <div id="home" className="min-h-screen bg-background">
       <SiteHeader />
@@ -69,50 +40,31 @@ function HomePage() {
   );
 }
 
-/* ---------------- HERO ---------------- */
 function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-center pt-24 pb-16 overflow-hidden">
-      <img
-        src={heroImg}
-        alt="Chefs working in a modern commercial kitchen with active equipment"
-        className="absolute inset-0 h-full w-full object-cover"
-        fetchPriority="high"
-      />
+      <img src={heroImg} alt="Chefs working in a modern commercial kitchen" className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
       <div className="absolute inset-0 bg-gradient-to-r from-ecc-charcoal/95 via-ecc-charcoal/80 to-ecc-charcoal/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-ecc-charcoal/80 via-transparent to-transparent" />
-
       <div className="container-x relative z-10">
         <div className="max-w-3xl text-white animate-fade-up">
-          <span className="eyebrow eyebrow-dot text-white/80">
-            <span className="text-white/80">Commercial Kitchen Equipment Support</span>
-          </span>
+          <span className="eyebrow eyebrow-dot text-white/80"><span className="text-white/80">Commercial Kitchen Equipment Support</span></span>
           <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-white">
             Keeping Commercial<br />Kitchens <span className="text-ecc-red">Running.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-base md:text-lg text-white/85 leading-relaxed">
-            Maintenance, repairs, emergency support and refurbished equipment solutions for
-            restaurants, hotels, cloud kitchens and food service businesses.
+            Maintenance, repairs, emergency support and refurbished equipment solutions for restaurants, hotels, cloud kitchens and food service businesses.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#contact" className="btn-primary">
-              Request Support <ChevronRight className="h-4 w-4" />
-            </a>
-            <a href={PHONE_HREF} className="btn-ghost-light">
-              <Phone className="h-4 w-4" /> Call Now
-            </a>
+            <a href="#contact" className="btn-primary">Request Support <ChevronRight className="h-4 w-4" /></a>
+            <a href={PHONE_HREF} className="btn-ghost-light"><Phone className="h-4 w-4" /> Call Now</a>
           </div>
-
           <div className="mt-10 flex items-start gap-3 max-w-xl">
             <BadgeCheck className="h-5 w-5 text-ecc-red mt-0.5 shrink-0" />
-            <p className="text-sm text-white/75">
-              Trusted support for restaurants, hotels, cloud kitchens, bakeries and institutional kitchens.
-            </p>
+            <p className="text-sm text-white/75">Trusted support for restaurants, hotels, cloud kitchens, bakeries and institutional kitchens.</p>
           </div>
         </div>
       </div>
-
-      {/* Stats strip */}
       <div className="absolute bottom-0 inset-x-0 z-10 hidden md:block">
         <div className="container-x">
           <div className="grid grid-cols-3 bg-white shadow-xl rounded-t-2xl overflow-hidden border border-border border-b-0">
@@ -133,22 +85,18 @@ function Hero() {
   );
 }
 
-/* ---------------- TRUST BAR ---------------- */
 function TrustBar() {
   const items = ["Restaurants", "Hotels", "Cloud Kitchens", "Bakeries", "Hospitals", "Caterers", "Industrial Kitchens"];
   return (
     <div className="border-y border-border bg-muted">
       <div className="container-x py-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
         <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Serving</span>
-        {items.map((i) => (
-          <span key={i} className="text-sm font-medium text-ecc-charcoal/80">{i}</span>
-        ))}
+        {items.map((i) => <span key={i} className="text-sm font-medium text-ecc-charcoal/80">{i}</span>)}
       </div>
     </div>
   );
 }
 
-/* ---------------- SECTION 2 PROBLEM ---------------- */
 function Problem() {
   const stats = [
     { icon: Wrench, label: "Equipment Repairs", desc: "Fast diagnosis. Minimal disruption." },
@@ -167,11 +115,10 @@ function Problem() {
             A single equipment failure can disrupt service, impact food quality and affect revenue.
           </p>
           <p className="mt-3 text-muted-foreground text-lg leading-relaxed">
-            ECC provides reliable commercial kitchen equipment support that helps businesses
-            stay operational with minimal downtime.
+            ECC provides reliable commercial kitchen equipment support that helps businesses stay operational with minimal downtime.
           </p>
         </div>
-        <div className="grid sm:grid-cols-1 gap-4">
+        <div className="grid gap-4">
           {stats.map((s) => (
             <div key={s.label} className="card-hover flex items-start gap-5 rounded-2xl border border-border bg-white p-6">
               <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-ecc-blue/10 text-ecc-blue">
@@ -189,7 +136,6 @@ function Problem() {
   );
 }
 
-/* ---------------- SECTION 3 SERVICES ---------------- */
 function Services() {
   const services = [
     { icon: Wrench, title: "Equipment Repairs", desc: "Fast diagnosis and repair support." },
@@ -204,12 +150,9 @@ function Services() {
       <div className="container-x">
         <div className="max-w-3xl">
           <span className="eyebrow eyebrow-dot">What We Do</span>
-          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
-            One Call. <span className="text-ecc-blue">Complete Support.</span>
-          </h2>
+          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">One Call. <span className="text-ecc-blue">Complete Support.</span></h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Instead of coordinating multiple vendors, technicians and suppliers, businesses can rely on
-            ECC for end-to-end equipment support.
+            Instead of coordinating multiple vendors, technicians and suppliers, businesses can rely on ECC for end-to-end equipment support.
           </p>
         </div>
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -231,7 +174,6 @@ function Services() {
   );
 }
 
-/* ---------------- SECTION 4 INDUSTRIES ---------------- */
 function Industries() {
   const items = [
     { icon: Hotel, name: "Hotels" },
@@ -248,12 +190,8 @@ function Industries() {
       <div className="container-x">
         <div className="max-w-3xl">
           <span className="eyebrow eyebrow-dot">Industries</span>
-          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
-            Built for <span className="text-ecc-red">Commercial Kitchens.</span>
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            ECC supports food service operations across multiple industries.
-          </p>
+          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">Built for <span className="text-ecc-red">Commercial Kitchens.</span></h2>
+          <p className="mt-5 text-lg text-muted-foreground">ECC supports food service operations across multiple industries.</p>
         </div>
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {items.map((i) => (
@@ -270,7 +208,6 @@ function Industries() {
   );
 }
 
-/* ---------------- SECTION 5 REFURBISHED ---------------- */
 function Refurbished() {
   const cats = [
     { icon: Flame, name: "Cooking Equipment" },
@@ -292,16 +229,10 @@ function Refurbished() {
           <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight text-white">
             Refurbished Equipment That <span className="text-ecc-red">Makes Business Sense.</span>
           </h2>
-          <p className="mt-5 text-lg text-white/80">
-            Not every operation requires brand-new equipment.
-          </p>
-          <p className="mt-3 text-lg text-white/80">
-            ECC helps businesses source quality refurbished commercial kitchen equipment at cost-effective prices.
-          </p>
+          <p className="mt-5 text-lg text-white/80">Not every operation requires brand-new equipment.</p>
+          <p className="mt-3 text-lg text-white/80">ECC helps businesses source quality refurbished commercial kitchen equipment at cost-effective prices.</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#contact" className="btn-primary">
-              View Available Equipment <ChevronRight className="h-4 w-4" />
-            </a>
+            <a href="#contact" className="btn-primary">View Available Equipment <ChevronRight className="h-4 w-4" /></a>
             <a href={PHONE_HREF} className="btn-ghost-light"><Phone className="h-4 w-4" /> Call Now</a>
           </div>
           <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
@@ -333,7 +264,6 @@ function Refurbished() {
   );
 }
 
-/* ---------------- SECTION 6 WHY CHOOSE ---------------- */
 function WhyChoose() {
   const reasons = [
     { icon: Users, t: "Experienced Technical Network" },
@@ -350,9 +280,7 @@ function WhyChoose() {
       <div className="container-x">
         <div className="max-w-3xl">
           <span className="eyebrow eyebrow-dot">Why ECC</span>
-          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
-            Why Businesses <span className="text-ecc-blue">Choose ECC.</span>
-          </h2>
+          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">Why Businesses <span className="text-ecc-blue">Choose ECC.</span></h2>
         </div>
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {reasons.map((r) => (
@@ -369,7 +297,6 @@ function WhyChoose() {
   );
 }
 
-/* ---------------- SECTION 7 COVERAGE ---------------- */
 function Coverage() {
   const cities = ["Mumbai", "Pune", "Goa"];
   return (
@@ -381,8 +308,7 @@ function Coverage() {
             Supporting Kitchens Across <span className="text-ecc-red">Multiple Cities.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            ECC's growing network of commercial kitchen technicians enables us to support
-            businesses across multiple locations.
+            ECC's growing network of commercial kitchen technicians enables us to support businesses across multiple locations.
           </p>
           <div className="mt-8 grid sm:grid-cols-2 gap-3">
             {cities.map((c) => (
@@ -404,7 +330,6 @@ function Coverage() {
 }
 
 function IndiaMap({ activeCities }: { activeCities: string[] }) {
-  // Simplified India silhouette with pins
   const pins = [
     { name: "Mumbai", x: 130, y: 305 },
     { name: "Pune", x: 158, y: 320 },
@@ -419,7 +344,6 @@ function IndiaMap({ activeCities }: { activeCities: string[] }) {
             <stop offset="100%" stopColor="#D6DEEC" />
           </linearGradient>
         </defs>
-        {/* Stylized India path */}
         <path
           fill="url(#land)"
           stroke="#2C51A3"
@@ -445,7 +369,6 @@ function IndiaMap({ activeCities }: { activeCities: string[] }) {
   );
 }
 
-/* ---------------- SECTION 8 ABOUT ---------------- */
 function About() {
   return (
     <section id="about" className="section bg-muted">
@@ -464,8 +387,7 @@ function About() {
             About <span className="text-ecc-blue">Equipment Care Company.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Equipment Care Company (ECC) specializes in commercial kitchen equipment maintenance,
-            repair, technical support and refurbishment.
+            Equipment Care Company (ECC) specializes in commercial kitchen equipment maintenance, repair, technical support and refurbishment.
           </p>
           <p className="mt-5 font-semibold text-ecc-charcoal">Our mission is simple:</p>
           <ul className="mt-3 space-y-2">
@@ -476,8 +398,7 @@ function About() {
             ))}
           </ul>
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-            From restaurants and hotels to cloud kitchens and institutional facilities, ECC provides
-            practical support solutions that help businesses focus on serving customers.
+            From restaurants and hotels to cloud kitchens and institutional facilities, ECC provides practical support solutions that help businesses focus on serving customers.
           </p>
         </div>
       </div>
@@ -485,7 +406,6 @@ function About() {
   );
 }
 
-/* ---------------- FINAL CTA ---------------- */
 function FinalCTA() {
   return (
     <section className="relative py-20 md:py-28 overflow-hidden">
@@ -493,12 +413,9 @@ function FinalCTA() {
       <div className="absolute inset-0 bg-gradient-to-r from-ecc-charcoal/95 to-ecc-charcoal/70" />
       <div className="container-x relative z-10 text-center max-w-3xl mx-auto">
         <AlertTriangle className="mx-auto h-10 w-10 text-ecc-red" />
-        <h2 className="mt-5 text-3xl md:text-5xl font-extrabold text-white leading-tight">
-          Need Equipment Support?
-        </h2>
+        <h2 className="mt-5 text-3xl md:text-5xl font-extrabold text-white leading-tight">Need Equipment Support?</h2>
         <p className="mt-5 text-lg text-white/80">
-          Whether you need urgent repairs, preventive maintenance, technical assistance or
-          refurbished equipment, ECC is ready to support your kitchen operations.
+          Whether you need urgent repairs, preventive maintenance, technical assistance or refurbished equipment, ECC is ready to support your kitchen operations.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a href="#contact" className="btn-primary">Request Support <ChevronRight className="h-4 w-4" /></a>
@@ -509,7 +426,6 @@ function FinalCTA() {
   );
 }
 
-/* ---------------- CONTACT ---------------- */
 function Contact() {
   return (
     <section id="contact" className="section bg-white">
@@ -522,13 +438,11 @@ function Contact() {
           <p className="mt-5 text-lg text-muted-foreground">
             Reach out for service requests, AMC enquiries or refurbished equipment quotations.
           </p>
-
           <div className="mt-8 space-y-4">
-            <ContactRow icon={Phone} label="Phone" value="+91 8452 969696" href="tel:+918452969696" />
-            <ContactRow icon={Mail} label="Email" value="support@equipmentcarecompany.com" href="mailto:support@equipmentcarecompany.com" />
+            <ContactRow icon={Phone} label="Phone" value="+91 8452 969696" href={PHONE_HREF} />
+            <ContactRow icon={Mail} label="Email" value={EMAIL} href={EMAIL_HREF} />
             <ContactRow icon={MapPin} label="Service Locations" value="Mumbai • Pune • Goa • Expanding across India" />
           </div>
-
           <a
             href="https://wa.me/918452969696?text=Hi%20ECC%2C%20I%20need%20equipment%20support."
             target="_blank"
@@ -536,13 +450,11 @@ function Contact() {
             className="mt-8 inline-flex items-center gap-3 rounded-xl bg-[#25D366] px-6 py-4 font-semibold text-white shadow-lg hover:brightness-95 transition"
           >
             <span className="grid h-8 w-8 place-items-center rounded-full bg-white/20">
-              {/* WhatsApp glyph */}
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.81 11.81 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-.607z"/></svg>
             </span>
             Chat on WhatsApp
           </a>
         </div>
-
         <ContactForm />
       </div>
     </section>
@@ -564,20 +476,17 @@ function ContactRow({ icon: Icon, label, value, href }: { icon: any; label: stri
   return href ? <a href={href}>{inner}</a> : inner;
 }
 
-/* ---------------- FOOTER ---------------- */
 function Footer() {
   return (
     <footer className="bg-ecc-charcoal text-white">
       <div className="container-x py-14 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
-          <img src={logoWhite.url} alt="Equipment Care Company" className="h-12 w-auto" />
+          <img src={logoWhite} alt="Equipment Care Company" className="h-12 w-auto" />
           <p className="mt-5 text-white/70 max-w-md leading-relaxed">
-            Equipment Care Company supports commercial kitchens with maintenance,
-            repairs, AMC programs and refurbished equipment solutions.
+            Equipment Care Company supports commercial kitchens with maintenance, repairs, AMC programs and refurbished equipment solutions.
           </p>
           <p className="mt-6 text-xl font-bold">Keeping Commercial Kitchens Running.</p>
         </div>
-
         <div>
           <h4 className="text-sm font-bold uppercase tracking-widest text-white">Menu</h4>
           <ul className="mt-4 space-y-2.5 text-white/70">
@@ -589,12 +498,11 @@ function Footer() {
             ))}
           </ul>
         </div>
-
         <div>
           <h4 className="text-sm font-bold uppercase tracking-widest text-white">Contact</h4>
           <ul className="mt-4 space-y-3 text-white/70 text-sm">
             <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-ecc-red" /> +91 8452 969696</li>
-            <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 text-ecc-red" /> support@equipmentcarecompany.com</li>
+            <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 text-ecc-red" /> {EMAIL}</li>
             <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 text-ecc-red" /> Mumbai • Pune • Goa</li>
           </ul>
           <div className="mt-5 flex gap-3">

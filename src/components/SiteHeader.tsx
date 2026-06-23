@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
-import logo from "@/assets/ecc-logo.svg.asset.json";
+import logo from "@/assets/ecc-logo.svg";
 
 const nav = [
   { label: "Home", href: "#home" },
@@ -32,7 +32,7 @@ export function SiteHeader() {
     >
       <div className="container-x flex h-16 md:h-20 items-center justify-between gap-4">
         <a href="#home" className="flex items-center gap-2 shrink-0" aria-label="Equipment Care Company home">
-          <img src={logo.url} alt="Equipment Care Company" className="h-8 md:h-10 w-auto" />
+          <img src={logo} alt="Equipment Care Company" className="h-8 md:h-10 w-auto" />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">
