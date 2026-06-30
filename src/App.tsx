@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Wrench, ShieldCheck, RotateCcw, Cog, Package, Zap, AlertTriangle,
   Hotel, Utensils, CloudFog, Cake, Stethoscope, Building2, Factory, ChefHat,
@@ -40,15 +41,77 @@ export default function App() {
   );
 }
 
+const HERO_SLIDES = [
+  {
+    image: techImg,
+    alt: "Expert technician diagnosing and repairing commercial kitchen equipment",
+    caption: "Expert Diagnostic & Repair Services"
+  },
+  {
+    image: refurbImg,
+    alt: "Refurbished commercial ovens and ranges restored to peak performance",
+    caption: "Comprehensive Preventive Maintenance"
+  },
+  {
+    image: ctaImg,
+    alt: "Modern commercial kitchen industrial operations in action",
+    caption: "24/7 Rapid Emergency Response"
+  },
+  {
+    image: heroImg,
+    alt: "Commercial kitchen equipment maintenance and support",
+    caption: "End-to-End Kitchen Operations Care"
+  }
+];
+
 function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative min-h-[100svh] flex items-center pt-24 pb-16 overflow-hidden">
-      <img src={heroImg} alt="Chefs working in a modern commercial kitchen" className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ecc-charcoal/95 via-ecc-charcoal/80 to-ecc-charcoal/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ecc-charcoal/80 via-transparent to-transparent" />
-      <div className="container-x relative z-10">
+      {/* Animated Slideshow Background */}
+      <div className="absolute inset-0 z-0 bg-ecc-charcoal">
+        {HERO_SLIDES.map((slide, idx) => (
+          <div
+            key={slide.alt}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+          >
+            <img
+              src={slide.image}
+              alt={slide.alt}
+              className={`h-full w-full object-cover transition-transform duration-[6000ms] ease-out ${
+                idx === currentSlide ? "scale-105" : "scale-100"
+              }`}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Overlays for contrast & legibility */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-ecc-charcoal/95 via-ecc-charcoal/85 to-ecc-charcoal/40" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-ecc-charcoal/90 via-transparent to-black/30" />
+
+      <div className="container-x relative z-20">
         <div className="max-w-3xl text-white animate-fade-up">
-          <span className="eyebrow eyebrow-dot text-white/80"><span className="text-white/80">Commercial Kitchen Equipment Support</span></span>
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="eyebrow eyebrow-dot text-white/90">
+              <span className="text-white/90">Commercial Kitchen Equipment Support</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-ecc-blue/80 text-white border border-white/10 backdrop-blur-md transition-all duration-500">
+              <Cog className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: "8s" }} />
+              {HERO_SLIDES[currentSlide].caption}
+            </span>
+          </div>
+
           <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-white">
             Keeping Commercial<br />Kitchens <span className="text-ecc-red">Running.</span>
           </h1>
@@ -59,13 +122,31 @@ function Hero() {
             <a href="#contact" className="btn-primary">Request Support <ChevronRight className="h-4 w-4" /></a>
             <a href={PHONE_HREF} className="btn-ghost-light"><Phone className="h-4 w-4" /> Call Now</a>
           </div>
-          <div className="mt-10 flex items-start gap-3 max-w-xl">
-            <BadgeCheck className="h-5 w-5 text-ecc-red mt-0.5 shrink-0" />
-            <p className="text-sm text-white/75">Trusted support for restaurants, hotels, cloud kitchens, bakeries and institutional kitchens.</p>
+
+          <div className="mt-10 flex items-center justify-between max-w-xl border-t border-white/15 pt-6 gap-4 flex-wrap">
+            <div className="flex items-start gap-3">
+              <BadgeCheck className="h-5 w-5 text-ecc-red mt-0.5 shrink-0" />
+              <p className="text-sm text-white/80">Trusted support for restaurants, hotels, cloud kitchens, bakeries and institutional kitchens.</p>
+            </div>
+
+            {/* Slide Indicators */}
+            <div className="flex items-center gap-2">
+              {HERO_SLIDES.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    idx === currentSlide ? "w-8 bg-ecc-red" : "w-2 bg-white/40 hover:bg-white/70"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 inset-x-0 z-10 hidden md:block">
+
+      <div className="absolute bottom-0 inset-x-0 z-20 hidden md:block">
         <div className="container-x">
           <div className="grid grid-cols-3 bg-white shadow-xl rounded-t-2xl overflow-hidden border border-border border-b-0">
             {[
