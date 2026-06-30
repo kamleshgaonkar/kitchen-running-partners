@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Wrench, ShieldCheck, RotateCcw, Cog, Package, Zap, AlertTriangle,
   Hotel, Utensils, CloudFog, Cake, Stethoscope, Building2, Factory, ChefHat,
