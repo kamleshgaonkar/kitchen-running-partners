@@ -10,6 +10,8 @@ import heroImg from "@/assets/hero-kitchen.jpg";
 import ctaImg from "@/assets/cta-kitchen.jpg";
 import techImg from "@/assets/technician.jpg";
 import refurbImg from "@/assets/refurbished.jpg";
+import slide1Img from "@/assets/slide-1.png";
+import slide2Img from "@/assets/slide-2.png";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ContactForm } from "@/components/ContactForm";
@@ -48,8 +50,8 @@ const HERO_SLIDES = [
     caption: "Expert Diagnostic & Repair Services"
   },
   {
-    image: refurbImg,
-    alt: "Refurbished commercial ovens and ranges restored to peak performance",
+    image: slide1Img,
+    alt: "Technician performing maintenance and repair on commercial kitchen oven equipment",
     caption: "Comprehensive Preventive Maintenance"
   },
   {
@@ -58,8 +60,8 @@ const HERO_SLIDES = [
     caption: "24/7 Rapid Emergency Response"
   },
   {
-    image: heroImg,
-    alt: "Commercial kitchen equipment maintenance and support",
+    image: slide2Img,
+    alt: "Technician servicing commercial kitchen refrigeration unit and compressor",
     caption: "End-to-End Kitchen Operations Care"
   }
 ];
